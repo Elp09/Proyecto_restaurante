@@ -8,8 +8,9 @@ package elp.proyecto_restaurante;
 public class Proyecto_restaurante {
 
     public static void main(String[] args) {
-        // prueba santi
-        //prueba 02 
+        
+        
+        //Ya se como funciona esta carajada :D
         // prueba 1 elias
         
     }
