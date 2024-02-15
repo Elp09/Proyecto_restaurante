@@ -10,7 +10,7 @@ public class Proyecto_restaurante {
     public static void main(String[] args) {
         
         
-        //Ya se como funciona esta carajada :D
+        //Prueba santi
         // prueba 1 elias
         
     }
