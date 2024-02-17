@@ -9,9 +9,9 @@ public class Proyecto_restaurante {
 
     public static void main(String[] args) {
         
-        
-        //Prueba santi
-        // prueba 1 elias
+        Opciones inicio_programa = new Opciones();
+        inicio_programa.inicio();
+
         
     }
 }
