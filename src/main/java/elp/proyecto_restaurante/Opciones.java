@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class Opciones {
     
-    public int inicio(){
+    public int Inicio(){
         String botones_menu_inicial[] = {"Restaurante", "Ordenes", "Menu", "Reportes", "Salir"};
         int opcion_escogida = JOptionPane.showOptionDialog(
             null,
@@ -42,7 +42,7 @@ public class Opciones {
             
     }
     
-    public void informacion_restaurante(){
+    public void Informacion_restaurante(){
         
     }
     

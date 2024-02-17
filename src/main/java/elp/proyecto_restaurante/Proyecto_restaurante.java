@@ -10,7 +10,7 @@ public class Proyecto_restaurante {
     public static void main(String[] args) {
         
         Opciones inicio_programa = new Opciones();
-        inicio_programa.inicio();
+        inicio_programa.Inicio();
 
         
     }

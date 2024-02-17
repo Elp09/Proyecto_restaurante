@@ -10,7 +10,7 @@ public class Mesa {
     boolean tiene_vista;
     Mesero mesero;
     
-    public void iniciar_mesa(){
+    public void Iniciar_mesa(){
         
     }
 }
