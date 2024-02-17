@@ -9,8 +9,13 @@ public class Proyecto_restaurante {
 
     public static void main(String[] args) {
         
-        Opciones inicio_programa = new Opciones();
-        inicio_programa.Inicio();
+        //Se crea e inicializa el restaurante con su informacion generada
+        //aleatoriamente
+        Restaurante restaurante_Mil_Sabores = new Restaurante();
+        restaurante_Mil_Sabores.Inicializar();
+        
+        Opciones catalogo_opciones = new Opciones();
+        catalogo_opciones.Inicio();
 
         
     }
