@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package elp.proyecto_restaurante;
 
-/**
- *
- * @author elp51
- */
 public class Reportes {
-    
+
+    String reportes_Platillo = "";
+    String reportes_Mesero = "";
+    String reportes_DatosMesero = "";
+    String reportes_DatosOrdenes = "";
+    int reportes_VentasTotales = 0;
+    int reporte_VentasPlatillo = 0;
+    int reportes_VentasMesa = 0;
+
 }
