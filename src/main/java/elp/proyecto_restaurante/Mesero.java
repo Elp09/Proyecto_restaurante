@@ -5,7 +5,8 @@ import javax.swing.JOptionPane;
 
 
 public class Mesero {
-    
+    public static void infoMeseros (){
+        
     //Mesero 1
         int id_Mesero001 = 10020;
         String name_Mesero001 = "Julian Coto";
@@ -87,3 +88,4 @@ public class Mesero {
               
     
             }
+}
