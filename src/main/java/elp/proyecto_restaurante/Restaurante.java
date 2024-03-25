@@ -7,21 +7,20 @@ import java.util.Random;
 public class Restaurante {
     //Att
     private Mesa mesas[];
-    private int nume_mesas;
+    public static int nume_mesas;
 
     public Restaurante(){
-        nume_mesas = randint();
+        nume_mesas = randint(8, 12);
         mesas = new Mesa[nume_mesas];
         
+        
+ 
     }
 
     public Mesa[] getMesas() {
-        return mesas;
+        return this.mesas;
     }
 
-    public int getNume_mesas() {
-        return nume_mesas;
-    }
     
     
     
@@ -31,8 +30,11 @@ public class Restaurante {
     
     
     
-    public int randint(){
+    
+    
+    
+    public static int randint(int min, int max){
         Random ran = new Random();
-        return ran.nextInt(8, 13);
+        return ran.nextInt(min, max + 1);
     }
 }

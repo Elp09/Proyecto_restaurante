@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 public class MenuPlatillos {
     public static void menuPlatillos(){
 //Botones
+//Tiene que ser un Menu, si dice menu es menu con joption
     
         String botones_MenuPlatillos[] = {"Mostrar Menu", "Agregar platillo", "Editar platillo", "Eliminar platillo", "Salir"};
         int botones = JOptionPane.showOptionDialog(

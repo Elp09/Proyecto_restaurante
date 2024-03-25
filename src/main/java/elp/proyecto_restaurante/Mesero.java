@@ -8,18 +8,36 @@ public class Mesero {
     
     private int id;
     private String nombre;
-    private int mesas_asignadas[];
+    private int mesas_asignadas[];//va entre 2 y 3
     private Turno_Mesero turno;
     private double propinas;
     private double rating;
+    private double total_ventas;
 
     public Mesero(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
         this.rating = 5;
         this.propinas = 0;
+        this.turno = generar_turno();
+        //this.mesas_asignadas = new int[Restaurante.]
+        this.total_ventas = 0;
         
         
+    }
+    
+    public static Turno_Mesero generar_turno(){
+        int tipo_turno = Restaurante.randint(1, 4);
+        switch (tipo_turno){
+            case 1:
+                return Turno_Mesero.MANANA;
+            case 2:
+                return Turno_Mesero.TARDE;
+            case 3:
+                return Turno_Mesero.NOCHE;
+            default:
+                return null;
+        }
     }
     
     

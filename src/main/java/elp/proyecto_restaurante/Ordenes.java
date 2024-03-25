@@ -21,7 +21,9 @@ public class Ordenes {
         float total = 0;
         boolean estado = false; // determina si la cuenta esta abierta o cerrada.
 
-        do {
+        
+        public void opciones_ordenes(){
+            do {
             decision_orden = Integer.parseInt(
                     JOptionPane.showInputDialog("""
                     Menu de ordenes
@@ -31,34 +33,37 @@ public class Ordenes {
                     4-salir
                       """));
 
-            if (decision_orden == 1) {
-                orden = true;
-                estado = true;
-                LocalTime horaActual = LocalTime.now();
-                id_orden += 1;
-                nombre = JOptionPane.showInputDialog("Digite su nombre.");
-                numero_mesa = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de mesa."));
-                // ...
+                if (decision_orden == 1) {
+                    orden = true;
+                    estado = true;
+                    LocalTime horaActual = LocalTime.now();
+                    id_orden += 1;
+                    nombre = JOptionPane.showInputDialog("Digite su nombre.");
+                    numero_mesa = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de mesa."));
+                    // ...
 
-                JOptionPane.showMessageDialog(null,
-                        "\n| Id Orden #|"
-                                + "\n| Cliente:|"
-                                + "\n| Mesa:- si tiene vistas al mar"
-                                + "\n| Mesero:"
-                                + "\n| Hora:" + horaActual
-                                + "\n| Estado: Abierta"
-                                + "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
-                );
-            } else if (decision_orden == 2) {
-                if (orden) {
-                    //agregar plato a la orden
-                } else {
-                    JOptionPane.showMessageDialog(null, "Abra una orden por favor.");
+                    JOptionPane.showMessageDialog(null,
+                            "\n| Id Orden #|"
+                                    + "\n| Cliente:|"
+                                    + "\n| Mesa:- si tiene vistas al mar"
+                                    + "\n| Mesero:"
+                                    + "\n| Hora:" + horaActual
+                                    + "\n| Estado: Abierta"
+                                    + "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+                    );
+                } else if (decision_orden == 2) {
+                    if (orden) {
+                        //agregar plato a la orden
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Abra una orden por favor.");
+                    }
+                } else if (decision_orden == 3) {
+                    //cerrar orden
                 }
-            } else if (decision_orden == 3) {
-                //cerrar orden
-            }
 
-        } while (decision_orden != 4);
-    }
+            } while (decision_orden != 4);
+            
+        }
+            
+        
 }

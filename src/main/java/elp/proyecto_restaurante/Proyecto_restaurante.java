@@ -13,10 +13,11 @@ public class Proyecto_restaurante {
         //Se crea e inicializa el restaurante con su informacion generada
         //aleatoriamente
         Restaurante restaurante_Mil_Sabores = new Restaurante();
+        Mesero pablo = new Mesero(1234, "pablo");
         
         Opciones catalogo_opciones = new Opciones();
         catalogo_opciones.Inicio();
-
+        System.out.println(pablo.getTurno());
         
     }
 }
