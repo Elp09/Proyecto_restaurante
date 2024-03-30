@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 public class Ordenes {
+    private int decision_orden;
 
     public static void main(String[] args) {
         new Ordenes().iniciarOrdenes();
@@ -19,10 +20,14 @@ public class Ordenes {
         boolean orden = false;
         float iva = 0;
         float total = 0;
-        boolean estado = false; // determina si la cuenta esta abierta o cerrada.
+        boolean estado = false;// determina si la cuenta esta abierta o cerrada.
+        
+        opciones_ordenes();
+    }
 
         
         public void opciones_ordenes(){
+            iniciarOrdenes();
             do {
             decision_orden = Integer.parseInt(
                     JOptionPane.showInputDialog("""
@@ -64,6 +69,6 @@ public class Ordenes {
             } while (decision_orden != 4);
             
         }
-            
-        
 }
+            
+       
