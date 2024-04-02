@@ -1,10 +1,10 @@
-
 package elp.proyecto_restaurante;
 
 import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 public class Ordenes {
+
     private int decision_orden;
 
     public static void main(String[] args) {
@@ -21,15 +21,14 @@ public class Ordenes {
         float iva = 0;
         float total = 0;
         boolean estado = false;// determina si la cuenta esta abierta o cerrada.
-        
-        opciones_ordenes();
+        Mesa mesa;
+
     }
 
-        
-        public void opciones_ordenes(){
+    public void opciones_ordenes() {
+        do {
             iniciarOrdenes();
-            do {
-            decision_orden = Integer.parseInt(
+            int decision_orden = Integer.parseInt(
                     JOptionPane.showInputDialog("""
                     Menu de ordenes
                     1-Abrir orden
@@ -38,7 +37,8 @@ public class Ordenes {
                     4-salir
                       """));
 
-                if (decision_orden == 1) {
+            switch (decision_orden) {
+                case 1:
                     orden = true;
                     estado = true;
                     LocalTime horaActual = LocalTime.now();
@@ -46,29 +46,31 @@ public class Ordenes {
                     nombre = JOptionPane.showInputDialog("Digite su nombre.");
                     numero_mesa = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de mesa."));
                     // ...
-
                     JOptionPane.showMessageDialog(null,
                             "\n| Id Orden #|"
-                                    + "\n| Cliente:|"
-                                    + "\n| Mesa:- si tiene vistas al mar"
-                                    + "\n| Mesero:"
-                                    + "\n| Hora:" + horaActual
-                                    + "\n| Estado: Abierta"
-                                    + "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+                            + "\n| Cliente:|"
+                            + "\n| Mesa:- si tiene vistas al mar"
+                            + "\n| Mesero:"
+                            + "\n| Hora:" + horaActual
+                            + "\n| Estado: Abierta"
+                            + "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
                     );
-                } else if (decision_orden == 2) {
+                    break;
+                case 2:
                     if (orden) {
                         //agregar plato a la orden
                     } else {
                         JOptionPane.showMessageDialog(null, "Abra una orden por favor.");
                     }
-                } else if (decision_orden == 3) {
-                    //cerrar orden
-                }
+                    break;
+                //cerrar orden
+                case 3:
+                    break;
+                default:
+                    break;
+            }
 
-            } while (decision_orden != 4);
-            
-        }
+        } while (decision_orden != 4);
+
+    }
 }
-            
-       
