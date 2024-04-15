@@ -1,10 +1,11 @@
 
 package elp.proyecto_restaurante;
 
-import javax.swing.JOptionPane;
-
 
 public class Mesero {
+    public String nombres[] = {"Pedro", "Juan", "Marcos", "David", "Alejandro",
+    "Martino", "Pablo"};
+    public String apellidos[] = {"Ramirez", "Fallas", "Zeledon", "Carano", "Teco", "Mora"};
     
     private int id;
     private String nombre;
@@ -12,16 +13,15 @@ public class Mesero {
     private Turno_Mesero turno;
     private double propinas;
     private double rating;
-    private double total_ventas;
+    
 
-    public Mesero(int id, String nombre) {
+    public Mesero(int id) {
         this.id = id;
-        this.nombre = nombre;
+        setNombre();
         this.rating = 5;
         this.propinas = 0;
         this.turno = generar_turno();
         //this.mesas_asignadas = new int[Restaurante.]
-        this.total_ventas = 0;
         
         
     }
@@ -40,16 +40,22 @@ public class Mesero {
         }
     }
     
+    public void setNombre(){
+        String nombre = "";
+        int cod_nombre = Restaurante.randint(0, 6);
+        nombre += nombres[cod_nombre];
+        int cod_apellido = Restaurante.randint(0, 5);
+        nombre += " " + apellidos[cod_apellido];
+        this.nombre = nombre;
+        
+    }
+    
     
     
     
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public void setMesas_asignadas(int[] mesas_asignadas) {
