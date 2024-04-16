@@ -4,12 +4,18 @@ package elp.proyecto_restaurante;
 
 public class Mesero {
     public String nombres[] = {"Pedro", "Juan", "Marcos", "David", "Alejandro",
-    "Martino", "Pablo"};
-    public String apellidos[] = {"Ramirez", "Fallas", "Zeledon", "Carano", "Teco", "Mora"};
+    "Martino", "Pablo", "Luis", "Ana", "Sofía", "María", "Carlos", "José", "Laura", 
+    "Manuel", "Elena", "Andrés", "Lucía", "Gabriel", "Isabel", "Diego", "Valentina", 
+    "Javier", "Camila", "Francisco", "Paula", "Miguel", "Daniela", "Antonio"};
+    
+    public String apellidos[] = {"Ramirez", "Fallas", "Zeledon", "Carano", "Teco", 
+    "Mora", "Rodriguez", "Hernandez", "Gomez", "Lopez", "Soto", "Chaves", "Garcia", 
+    "Diaz", "Castro", "Fernandez", "Vargas", "Cruz", "Mendez", "Sanchez", "Morales"};
+  
     
     private int id;
     private String nombre;
-    private int mesas_asignadas[];//va entre 2 y 3
+    public int mesas_asignadas[] = {-1, -1, -1}; //va entre 2 y 3
     private Turno_Mesero turno;
     private double propinas;
     private double rating;
@@ -42,9 +48,9 @@ public class Mesero {
     
     public void setNombre(){
         String nombre = "";
-        int cod_nombre = Restaurante.randint(0, 6);
+        int cod_nombre = Restaurante.randint(0, nombres.length);
         nombre += nombres[cod_nombre];
-        int cod_apellido = Restaurante.randint(0, 5);
+        int cod_apellido = Restaurante.randint(0, apellidos.length);
         nombre += " " + apellidos[cod_apellido];
         this.nombre = nombre;
         

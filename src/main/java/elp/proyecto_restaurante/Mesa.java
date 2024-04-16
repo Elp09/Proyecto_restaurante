@@ -35,6 +35,26 @@ public class Mesa {
     public void setMesero(Mesero mesero) {
         this.mesero = mesero;
     }
+
+    public int getNumero_mesa() {
+        return numero_mesa;
+    }
+
+    public int getCantidad_sillas() {
+        return cantidad_sillas;
+    }
+
+    public boolean isEstado_uso() {
+        return estado_uso;
+    }
+
+    public boolean isTiene_vista() {
+        return tiene_vista;
+    }
+
+    public Mesero getMesero() {
+        return mesero;
+    }
     
     
     
