@@ -16,7 +16,7 @@ public class Proyecto_restaurante {
         Restaurante restaurante_Mil_Sabores = new Restaurante();
         
         Opciones catalogo_opciones = new Opciones();
-        catalogo_opciones.Inicio();
+        catalogo_opciones.Inicio(restaurante_Mil_Sabores);
         
     }
 }
