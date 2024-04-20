@@ -20,7 +20,7 @@ public class Opciones {
                 informacion_restaurante(restaurante);
                 break;
             case 1:
-                //menu_ordenes();
+               Ordeness.opciones_ordenes();
                 break;
             case 2:
                 //menu_menu();
