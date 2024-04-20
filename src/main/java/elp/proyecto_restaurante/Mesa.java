@@ -1,16 +1,61 @@
 
 package elp.proyecto_restaurante;
 
-
 public class Mesa {
     //Att
     int numero_mesa;
     int cantidad_sillas;
-    boolean estado_uso;
+    boolean estado_uso; //un boolean que empieza en false por default, esto significa que la mesa esta desocupada
     boolean tiene_vista;
     Mesero mesero;
-    
-    public void Iniciar_mesa(){
-        
+
+    public Mesa(int numero_mesa, boolean tiene_vista) {
+        this.numero_mesa = numero_mesa;
+        this.estado_uso = false;
+        this.tiene_vista = tiene_vista;
+        this.cantidad_sillas = Restaurante.randint(2, 6);
     }
+
+    public void setNumero_mesa(int numero_mesa) {
+        this.numero_mesa = numero_mesa;
+    }
+
+    public void setCantidad_sillas(int cantidad_sillas) {
+        this.cantidad_sillas = cantidad_sillas;
+    }
+
+    public void setEstado_uso(boolean estado_uso) {
+        this.estado_uso = estado_uso;
+    }
+
+    public void setTiene_vista(boolean tiene_vista) {
+        this.tiene_vista = tiene_vista;
+    }
+
+    public void setMesero(Mesero mesero) {
+        this.mesero = mesero;
+    }
+
+    public int getNumero_mesa() {
+        return numero_mesa;
+    }
+
+    public int getCantidad_sillas() {
+        return cantidad_sillas;
+    }
+
+    public boolean isEstado_uso() {
+        return estado_uso;
+    }
+
+    public boolean isTiene_vista() {
+        return tiene_vista;
+    }
+
+    public Mesero getMesero() {
+        return mesero;
+    }
+    
+    
+    
 }

@@ -5,8 +5,9 @@ import javax.swing.JOptionPane;
 
 
 public class MenuPlatillos {
-    
+    public static void menuPlatillos(){
 //Botones
+//Tiene que ser un Menu, si dice menu es menu con joption
     
         String botones_MenuPlatillos[] = {"Mostrar Menu", "Agregar platillo", "Editar platillo", "Eliminar platillo", "Salir"};
         int botones = JOptionPane.showOptionDialog(
@@ -33,12 +34,15 @@ public class MenuPlatillos {
 
             case 2:
                 JOptionPane.showInputDialog("Cual platillo desea cambiar ?");
-
+                break;
             case 3:
                 JOptionPane.showInputDialog("Cual Platillo desea eliminar");
+                break;
             case 4:
                 JOptionPane.showMessageDialog(null, "Saliendo...");
+                break;
 
         }
+    }
             
 }

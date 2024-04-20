@@ -1,5 +1,5 @@
 // Autores: Elias Leblicq
-//          xx
+//          Santiago vindas
 //          xx
 // prueba
 
@@ -12,12 +12,11 @@ public class Proyecto_restaurante {
         
         //Se crea e inicializa el restaurante con su informacion generada
         //aleatoriamente
+        
         Restaurante restaurante_Mil_Sabores = new Restaurante();
-        restaurante_Mil_Sabores.Inicializar();
         
         Opciones catalogo_opciones = new Opciones();
-        catalogo_opciones.Inicio();
-
+        catalogo_opciones.Inicio(restaurante_Mil_Sabores);
         
     }
 }
