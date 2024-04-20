@@ -12,7 +12,7 @@ public class Ordeness {
     private double total;
     private String nombre;
 
-    public static void opciones_ordenes() {
+    public static void opciones_ordenes(Restaurante restaurante) {
         Ordeness orden = new Ordeness();
         int id_orden = 200;
         int numero_mesa = 1;
@@ -39,7 +39,7 @@ public class Ordeness {
                     String nombre = JOptionPane.showInputDialog("Digite su nombre.");
                     orden.setNombre(nombre);
                     numero_mesa = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de mesa"));
-                    if (numero_mesa == 6) {
+                    if (es_mesa_valida(restaurante, numero_mesa)) {
                         JOptionPane.showMessageDialog(null, "El numero de mesa " + numero_mesa + " es valido");
                         System.out.println("|Orden #" + orden.getId_orden() + "|");
                         System.out.println("|Cliente " + orden.nombre + "|");
@@ -79,6 +79,15 @@ public class Ordeness {
     public enum Estado {
         Abierta,
         Cerrada;
+    }
+    
+    public static boolean es_mesa_valida(Restaurante restaurante, int numero_mesa){
+        for (int i = 0; i < restaurante.getMesas().length; i++){
+            if(restaurante.getMesas()[i].getNumero_mesa() == numero_mesa){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void botones() {
