@@ -25,7 +25,7 @@ public class Opciones {
                     Ordeness.opciones_ordenes(restaurante);
                     break;
                 case 2:
-                    //menu_menu();
+                    MenuRestaurante.Iniciar_menu_restaurante();
                     break;
                 case 3:
                     //menu_reportes();
@@ -33,7 +33,6 @@ public class Opciones {
                 default:
                     JOptionPane.showMessageDialog(null, "Gracias por usar");
                     opcion_escogida = 4;
-
             }
         }
 
