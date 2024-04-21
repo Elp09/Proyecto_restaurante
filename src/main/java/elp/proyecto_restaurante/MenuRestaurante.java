@@ -5,15 +5,15 @@ import javax.swing.JOptionPane;
 
 
 public class MenuRestaurante {
-    
+ 
     static int numeroPlatillo = 299; 
     static String[] platillos = new String[1000];
     static String[] descripciones = new String[1000];
     static double[] precios = new double[1000];
-    static String[] tipos = new String[1000];
+    static TipoPlatillo[] tipos = new TipoPlatillo[1000]; 
     static int cantidadPlatillos = 0;
 
-    public static void Iniciar_menu_restaurante() {
+    public static void main(String[] args) {
         boolean salir = false;
 
         while (!salir) {
@@ -56,11 +56,11 @@ public class MenuRestaurante {
                 + "\nBurger de pescado empanizado con aros de cebolla"
                 + "\nArroz con mariscos";
         for (int i = 0; i < cantidadPlatillos; i++) {
-            menu += "Número del platillo #" + (numeroPlatillo + i) + "\n";
-            menu += "Nombre: " + platillos[i] + "\n";
-            menu += "Descripción: " + descripciones[i] + "\n";
-            menu += "Precio: $" + precios[i] + "\n";
-            menu += "Tipo: " + tipos[i] + "\n\n";
+            System.out.println("Número del platillo #" + (numeroPlatillo + i));
+            System.out.println("Nombre: " + platillos[i]);
+            System.out.println("Descripción: " + descripciones[i]);
+            System.out.println("Precio: $" + precios[i]);
+            System.out.println("Tipo: " + tipos[i] + "\n");
         }
         JOptionPane.showMessageDialog(null, menu, "Menú del Restaurante", JOptionPane.PLAIN_MESSAGE);
     }
@@ -69,7 +69,7 @@ public class MenuRestaurante {
         String nombre = JOptionPane.showInputDialog("Nombre del platillo:");
         String descripcion = JOptionPane.showInputDialog("Descripción del platillo:");
         double precio = obtenerPrecio();
-        String tipo = obtenerTipoPlatillo();
+        TipoPlatillo tipo = obtenerTipoPlatillo(); // Cambio de String a TipoPlatillo
 
         platillos[cantidadPlatillos] = nombre;
         descripciones[cantidadPlatillos] = descripcion;
@@ -117,7 +117,7 @@ public class MenuRestaurante {
         String nombrePlatillo = platillos[indicePlatillo];
         String descripcionPlatillo = descripciones[indicePlatillo];
         double precioPlatillo = precios[indicePlatillo];
-        String tipoPlatillo = tipos[indicePlatillo];
+        TipoPlatillo tipoPlatillo = tipos[indicePlatillo]; // Cambio de String a TipoPlatillo
 
         int opcion = -1;
         do {
@@ -133,31 +133,26 @@ public class MenuRestaurante {
 
             switch (opcion) {
                 case 1:
-
                     String nuevoNombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre del platillo:");
                     platillos[indicePlatillo] = nuevoNombre;
                     JOptionPane.showMessageDialog(null, "Nombre actualizado correctamente.");
                     break;
                 case 2:
-
                     String nuevaDescripcion = JOptionPane.showInputDialog("Ingrese la nueva descripción del platillo:");
                     descripciones[indicePlatillo] = nuevaDescripcion;
                     JOptionPane.showMessageDialog(null, "Descripción actualizada correctamente.");
                     break;
                 case 3:
-
                     double nuevoPrecio = obtenerPrecio();
                     precios[indicePlatillo] = nuevoPrecio;
                     JOptionPane.showMessageDialog(null, "Precio actualizado correctamente.");
                     break;
                 case 4:
-
-                    String nuevoTipo = obtenerTipoPlatillo();
+                    TipoPlatillo nuevoTipo = obtenerTipoPlatillo();
                     tipos[indicePlatillo] = nuevoTipo;
                     JOptionPane.showMessageDialog(null, "Tipo actualizado correctamente.");
                     break;
                 case 5:
-
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opción no válida. Por favor seleccione una opción del 1 al 5.");
@@ -166,22 +161,7 @@ public class MenuRestaurante {
         } while (opcion != 5);
     }
 
-    public static void mostrarDetallesPlatillo(int indicePlatillo) {
-        String nombrePlatillo = platillos[indicePlatillo];
-        String descripcionPlatillo = descripciones[indicePlatillo];
-        double precioPlatillo = precios[indicePlatillo];
-        String tipoPlatillo = tipos[indicePlatillo];
-
-        JOptionPane.showMessageDialog(null, "Detalles del platillo:\n"
-                + "Número: " + (numeroPlatillo + indicePlatillo) + "\n"
-                + "Nombre: " + nombrePlatillo + "\n"
-                + "Descripción: " + descripcionPlatillo + "\n"
-                + "Precio: $" + precioPlatillo + "\n"
-                + "Tipo: " + tipoPlatillo);
-    }
-
     public static void eliminarPlatillo() {
-
         int numeroPlatilloEliminar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número del platillo que desea eliminar:"));
 
         boolean platilloEncontrado = false;
@@ -195,7 +175,6 @@ public class MenuRestaurante {
         }
 
         if (platilloEncontrado) {
-
             int opcionEliminar = JOptionPane.showConfirmDialog(null,
                     "¿Desea eliminar el platillo?\n\n"
                     + "Número del platillo: " + (numeroPlatillo + indicePlatillo) + "\n"
@@ -206,42 +185,34 @@ public class MenuRestaurante {
                     "Eliminar Platillo", JOptionPane.YES_NO_OPTION);
 
             if (opcionEliminar == JOptionPane.YES_OPTION) {
-
                 boolean platilloUtilizado = false;
 
                 if (platilloUtilizado) {
-
                     JOptionPane.showMessageDialog(null, "El platillo no se puede eliminar porque ha sido utilizado en una orden.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-
                     eliminarPlatilloSistema(indicePlatillo);
-
                     JOptionPane.showMessageDialog(null, "El platillo se ha eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         } else {
-
             int opcion = JOptionPane.showConfirmDialog(null,
                     "El platillo con el número: " + numeroPlatilloEliminar + " no se encuentra registrado en el sistema.\n\n"
                     + "¿Desea ingresar otro número?",
                     "Platillo no encontrado", JOptionPane.YES_NO_OPTION);
 
             if (opcion == JOptionPane.YES_OPTION) {
-
                 eliminarPlatillo();
             }
         }
     }
 
     public static void eliminarPlatilloSistema(int indicePlatillo) {
-
         for (int i = indicePlatillo; i < cantidadPlatillos - 1; i++) {
             platillos[i] = platillos[i + 1];
             descripciones[i] = descripciones[i + 1];
             precios[i] = precios[i + 1];
             tipos[i] = tipos[i + 1];
         }
-
         cantidadPlatillos--;
     }
 
@@ -278,21 +249,23 @@ public class MenuRestaurante {
         return precio;
     }
 
-    public static String obtenerTipoPlatillo() {
-        String tipoPlatillo = JOptionPane.showInputDialog("Selecciona el tipo de platillo:\n"
+    public static TipoPlatillo obtenerTipoPlatillo() {
+        String tipoPlatilloStr = JOptionPane.showInputDialog("Selecciona el tipo de platillo:\n"
                 + "1. SOPA\n"
                 + "2. POSTRE\n"
                 + "3. PLATILLO PRINCIPAL\n"
                 + "4. BEBIDA");
-        switch (tipoPlatillo) {
-            case "1":
-                return "SOPA";
-            case "2":
-                return "POSTRE";
-            case "3":
-                return "PLATILLO PRINCIPAL";
-            case "4":
-                return "BEBIDA";
+        int opcion = Integer.parseInt(tipoPlatilloStr);
+
+        switch (opcion) {
+            case 1:
+                return TipoPlatillo.SOPA;
+            case 2:
+                return TipoPlatillo.POSTRE;
+            case 3:
+                return TipoPlatillo.PLATILLO_PRINCIPAL;
+            case 4:
+                return TipoPlatillo.BEBIDA;
             default:
                 JOptionPane.showMessageDialog(null, "Opción inválida. Por favor selecciona una opción del 1 al 4.");
                 return obtenerTipoPlatillo();
