@@ -1,6 +1,8 @@
 package elp.proyecto_restaurante;
 
 import javax.swing.JOptionPane;
+import elp.proyecto_restaurante.MenuRestaurante;
+
 
 public class Opciones {
 
@@ -25,7 +27,7 @@ public class Opciones {
                     Ordeness.opciones_ordenes(restaurante);
                     break;
                 case 2:
-                    //menu_menu();
+                    MenuRestaurante.main(null);
                     break;
                 case 3:
                     //menu_reportes();
