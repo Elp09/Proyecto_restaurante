@@ -17,7 +17,7 @@ public class Proyecto_restaurante {
 
         Opciones catalogo_opciones = new Opciones();
         catalogo_opciones.Inicio(restaurante_Mil_Sabores);
-        //prueba commit01
+        //prueba commit
 
     }
 }
