@@ -4,37 +4,38 @@ import javax.swing.JOptionPane;
 
 public class Opciones {
 
-    public static int Inicio(Restaurante restaurante) {
+    public static void Inicio(Restaurante restaurante) {
         String botones_menu_inicial[] = {"Restaurante", "Ordenes", "Menu", "Reportes", "Salir"};
-        int opcion_escogida = JOptionPane.showOptionDialog(
-                null,
-                "Escoja la opcion deseada:",
-                "Menu de opciones",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                botones_menu_inicial, "Salir");
+        int opcion_escogida = -1;
+        while (opcion_escogida != 4) {
+            opcion_escogida = JOptionPane.showOptionDialog(
+                    null,
+                    "Escoja la opcion deseada:",
+                    "Menu de opciones",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    botones_menu_inicial, "Salir");
 
-        switch (opcion_escogida) {
-            case 0:
-                informacion_restaurante(restaurante);
-                break;
-            case 1:
-               Ordeness.opciones_ordenes(restaurante);
-                break;
-            case 2:
-                //menu_menu();
-                break;
-            case 3:
-                //menu_reportes();
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Gracias por usar");
-                opcion_escogida = 4;
+            switch (opcion_escogida) {
+                case 0:
+                    informacion_restaurante(restaurante);
+                    break;
+                case 1:
+                    Ordeness.opciones_ordenes(restaurante);
+                    break;
+                case 2:
+                    //menu_menu();
+                    break;
+                case 3:
+                    //menu_reportes();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Gracias por usar");
+                    opcion_escogida = 4;
 
+            }
         }
-
-        return opcion_escogida;
 
     }
 
@@ -72,7 +73,6 @@ public class Opciones {
             }
             tipo_mesas += ((tipo
                     + "                       ").substring(0, tamano_strings) + "|");
-            
 
         }
         System.out.println(numero_mesas);
