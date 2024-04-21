@@ -31,25 +31,28 @@ public class Ordeness {
 
             switch (opc) {
                 case 1:
-
-                    id_orden += 1;
-                    orden.setId_orden(id_orden);
                     iva = 0;
-                    Estado status = Estado.Abierta;
-                    String nombre = JOptionPane.showInputDialog("Digite su nombre.");
-                    orden.setNombre(nombre);
+                    orden.setNombre(JOptionPane.showInputDialog("Digite su nombre."));
+
                     numero_mesa = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de mesa"));
+
                     if (es_mesa_valida(restaurante, numero_mesa)) {
+                        orden.incrementarIdOrden();
                         JOptionPane.showMessageDialog(null, "El numero de mesa " + numero_mesa + " es valido");
-                        System.out.println("|Orden #" + orden.getId_orden() + "|");
-                        System.out.println("|Cliente " + orden.nombre + "|");
-                        System.out.println("|Mesa:" + "|");
+                        System.out.println("|Orden #" + orden.getIdOrden() + "|");
+                        System.out.println("|Cliente: " + orden.nombre + "|");
+                        if (mesaTieneVista(restaurante, numero_mesa)) {
+                            System.out.println("|Mesa: " + numero_mesa + "- Tiene vista al mar|");
+                        } else {
+                            System.out.println("|Mesa: " + numero_mesa + "- No Tiene vista al mar|");
+                        }
                         System.out.println("|Mesero |");
                         System.out.println("|Hora: " + orden.HoraActual + "|");
                         System.out.println("|Estado " + Estado.Abierta + "|");
                         System.out.println("-------------------");
+
                     } else {
-                        botones();
+                        botones(restaurante, numero_mesa);
                     }
 
                     break;
@@ -68,52 +71,60 @@ public class Ordeness {
         } while (opc != 4);
     }
 
-    public String getNombre() {
-        return nombre;
+    public static boolean mesaTieneVista(Restaurante restaurante, int numeroMesa) {
+        int[] mesasConVista = restaurante.mesa_con_vista();
+        for (int i = 0; i < mesasConVista.length; i++) {
+            if (mesasConVista[i] == numeroMesa) {
+                return true; 
+            }
+        }
+        return false; 
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public enum Estado {
-        Abierta,
-        Cerrada;
-    }
-    
-    public static boolean es_mesa_valida(Restaurante restaurante, int numero_mesa){
-        for (int i = 0; i < restaurante.getMesas().length; i++){
-            if(restaurante.getMesas()[i].getNumero_mesa() == numero_mesa){
+    public static boolean es_mesa_valida(Restaurante restaurante, int numero_mesa) {
+        for (int i = 0; i < restaurante.getMesas().length; i++) {
+            if (restaurante.getMesas()[i].getNumero_mesa() == numero_mesa) {
                 return true;
             }
         }
         return false;
     }
 
-    public static void botones() {
-        Ordeness orden = new Ordeness();
+    public static void botones(Restaurante restaurante, int numero_mesa) {
+        Ordeness orden01 = new Ordeness();
         boolean found = false;
         int numBoton = mostrarBotones("Que desea hacer?", "Mesa no valida", JOptionPane.QUESTION_MESSAGE,
                 new String[]{"Digitar otro numero", "Cancelar orden"});
         if (numBoton == 0) {
-            int numMesa = Integer.parseInt(JOptionPane.showInputDialog("Digite nuevamente el numero de mesa."));
-            while (found = false) {
-                System.out.println("Digite nuevamente su numero");
-                if (numMesa == Restaurante.randint(1, 12)) {
-                    found = true;
+            while (!found) {
+                int numMesa = Integer.parseInt(JOptionPane.showInputDialog("Digite nuevamente el numero de mesa."));
+                for (int i = 0; i < restaurante.getMesas().length; i++) {
+                    if (restaurante.getMesas()[i].getNumero_mesa() == numMesa) {
+                        found = true;
+                        break;
+                    }
                 }
+                if (found == true) {
+                    orden01.incrementarIdOrden();
+                    orden01.nombre = JOptionPane.showInputDialog("Digite de nuevo su nombre por favor");
+                    JOptionPane.showMessageDialog(null, "El numero de mesa " + numMesa + " es valido");
+                    System.out.println("|Orden #" + orden01.getIdOrden() + "|");
+                    System.out.println("|Cliente " + orden01.getNombre() + "|");
+                    if (mesaTieneVista(restaurante, numero_mesa)) {
+                        System.out.println("|Mesa: " + numero_mesa + "- Tiene vista|");
+                    } else {
+                        System.out.println("|Mesa: " + numero_mesa + "- No Tiene vista|");
+                    }
+                    System.out.println("|Mesero |");
+                    System.out.println("|Hora: " + orden01.HoraActual + "|");
+                    System.out.println("|Estado " + Estado.Abierta + "|");
+                    System.out.println("-------------------");
 
+                } else {
+                    System.out.println("Orden cancelada correctamente.");
+
+                }
             }
-            System.out.println("|Orden #" + orden.getId_orden() + "|");
-            System.out.println("|Cliente " + orden.nombre + "|");
-            System.out.println("|Mesa:" + "|");
-            System.out.println("|Mesero |");
-            System.out.println("|Hora: " + orden.HoraActual + "|");
-            System.out.println("|Estado " + Estado.Abierta + "|");
-            System.out.println("-------------------");
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Su orden fue cancelada correctamente.");
         }
     }
 
@@ -133,12 +144,31 @@ public class Ordeness {
                 botones[0]);
     }
 
-    public int getId_orden() {
-        return id_orden;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setId_orden(int id_orden) {
-        this.id_orden = id_orden;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public enum Estado {
+        Abierta,
+        Cerrada;
+    }
+
+    public Ordeness() {
+        this.id_orden = 200;
+    }
+
+    // Método para incrementar el número de orden
+    public void incrementarIdOrden() {
+        this.id_orden++;
+    }
+
+    // Método para obtener el número de orden actual
+    public int getIdOrden() {
+        return this.id_orden;
     }
 
     public int getNumero_mesa() {
