@@ -25,10 +25,10 @@ public class Opciones {
                     opciones_ordenes(restaurante);
                     break;
                 case 2:
-                    
+                    MenuRestaurante.incio();
                     break;
                 case 3:
-                    //menu_reportes();
+                    Reportes.mostrarMenu();
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Gracias por usar");
