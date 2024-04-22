@@ -48,5 +48,4 @@ public class Platillo {
         this.tipo = tipo;
     }
 }
-    
-}
+ 

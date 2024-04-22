@@ -1,6 +1,8 @@
 package elp.proyecto_restaurante;
 
+import java.time.LocalTime;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 public class Restaurante {
 
@@ -8,6 +10,7 @@ public class Restaurante {
     private Mesa mesas[];
     public static int nume_mesas;
     private Mesero meseros[];
+    private Orden ordenes[];
 
     public Restaurante() {
         nume_mesas = randint(8, 12);
@@ -18,8 +21,11 @@ public class Restaurante {
         asignar_meseros_amesas(meseros, mesas);
         asignar_mesas_aMeseros(meseros, mesas);
 
+        Orden ordenes[] = new Orden[25];
+
     }
 
+    //Parte de mesas y meseros >>>>>>>>>>>>>>>>>>
     public Mesa[] getMesas() {
         return this.mesas;
     }
@@ -98,12 +104,12 @@ public class Restaurante {
         meseros_disponibles[9] = meseros[1];
         meseros_disponibles[10] = meseros[2];
         meseros_disponibles[11] = meseros[3];
-        
+
         int i_mesero_escogido;
         for (int i = 0; i < mesas.length; i++) {
-            i_mesero_escogido = randint(0, mesas.length-1);
+            i_mesero_escogido = randint(0, mesas.length - 1);
             while (meseros_disponibles[i_mesero_escogido] == null) {
-                i_mesero_escogido = randint(0, mesas.length-1);
+                i_mesero_escogido = randint(0, mesas.length - 1);
             }
             mesas[i].setMesero(meseros_disponibles[i_mesero_escogido]);
             meseros_disponibles[i_mesero_escogido] = null;
@@ -118,14 +124,14 @@ public class Restaurante {
         }
         return false;
     }
-    
-    public void asignar_mesas_aMeseros(Mesero meseros[], Mesa mesas[]){
-        
-        int ultima_pos_mesero[] = {0,0,0,0};
-        
-        for (int i = 0; i < mesas.length; i++){
-            for (int j = 0; j < meseros.length; j++){
-                if (mesas[i].mesero == meseros[j]){
+
+    public void asignar_mesas_aMeseros(Mesero meseros[], Mesa mesas[]) {
+
+        int ultima_pos_mesero[] = {0, 0, 0, 0};
+
+        for (int i = 0; i < mesas.length; i++) {
+            for (int j = 0; j < meseros.length; j++) {
+                if (mesas[i].getMesero() == meseros[j]) {
                     meseros[j].mesas_asignadas[ultima_pos_mesero[j]] = i + 1;
                     ultima_pos_mesero[j] += 1;
                 }
@@ -133,6 +139,7 @@ public class Restaurante {
         }
     }
 
+    //FIN PARTE MESAS >>>>>>>>>>>>>>>>>>>
     public void mostrar() {
         /*for (int i = 0; i < meseros.length; i++) {
             for (int j = 0; j < 3; j++){
@@ -162,6 +169,37 @@ public class Restaurante {
     public static int redondear(float num) {
         return Math.round(num);
 
+    }
+
+    public static void abrir_orden(Restaurante restaurante) {
+        String nombre_cliente = JOptionPane.showInputDialog("Digite el nombre del cliente:");
+        int numero_mesa = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de mesa:"));
+        if (es_mesa_valida(restaurante, numero_mesa) >= 0){
+            Orden orden = new Orden(nombre_cliente, restaurante.getMesas()[es_mesa_valida(restaurante, numero_mesa)]);
+        }else{
+            //botones de la funcion ordenes
+        }
+            
+
+    }
+
+    public static boolean mesaTieneVista(Restaurante restaurante, int numeroMesa) {
+        int[] mesasConVista = restaurante.mesa_con_vista();
+        for (int i = 0; i < mesasConVista.length; i++) {
+            if (mesasConVista[i] == numeroMesa) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int es_mesa_valida(Restaurante restaurante, int numero_mesa) {
+        for (int i = 0; i < restaurante.getMesas().length; i++) {
+            if (restaurante.getMesas()[i].getNumero_mesa() == numero_mesa) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }

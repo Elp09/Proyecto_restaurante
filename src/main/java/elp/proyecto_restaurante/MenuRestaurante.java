@@ -1,17 +1,15 @@
-
 package elp.proyecto_restaurante;
 
 import javax.swing.JOptionPane;
 
-
 public class MenuRestaurante {
- 
+
     static int numeroPlatillo = 299;
     static Platillo[] platillos = new Platillo[1000];
     static int cantidadPlatillos = 0;
 
     public static void MenuRestaurante() {
-         boolean salir = false;
+        boolean salir = false;
 
         while (!salir) {
             int opcion = Integer.parseInt(JOptionPane.showInputDialog(
@@ -53,13 +51,13 @@ public class MenuRestaurante {
                 + "\nArroz con mariscos";
 
         for (int i = 0; i < cantidadPlatillos; i++) {
-        Platillo platillo = platillos[i];
-        System.out.println("Número del platillo #" + (numeroPlatillo + i));
-        System.out.println("Nombre: " + platillo.getNombre());
-        System.out.println("Descripción: " + platillo.getDescripcion());
-        System.out.println("Precio: $" + platillo.getPrecio());
-        System.out.println("Tipo: " + platillo.getTipo() + "\n");
-    }
+            Platillo platillo = platillos[i];
+            System.out.println("Número del platillo #" + (numeroPlatillo + i));
+            System.out.println("Nombre: " + platillo.getNombre());
+            System.out.println("Descripción: " + platillo.getDescripcion());
+            System.out.println("Precio: $" + platillo.getPrecio());
+            System.out.println("Tipo: " + platillo.getTipo() + "\n");
+        }
 
         JOptionPane.showMessageDialog(null, menu, "Menú del Restaurante", JOptionPane.PLAIN_MESSAGE);
     }

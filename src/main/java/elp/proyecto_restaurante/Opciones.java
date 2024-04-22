@@ -25,7 +25,7 @@ public class Opciones {
                     Ordeness.opciones_ordenes(restaurante);
                     break;
                 case 2:
-                    MenuRestaurante.Iniciar_menu_restaurante();
+                    opciones_ordenes(restaurante);
                     break;
                 case 3:
                     //menu_reportes();
@@ -79,6 +79,38 @@ public class Opciones {
         System.out.println(estado_mesas);
         System.out.println(meseros_mesas);
         System.out.println(tipo_mesas);
+    }
+    
+    public static void opciones_ordenes(Restaurante restaurante) {
+        String nombre_cliente;
+        int numero_mesa;
+        int opc;
+        do {
+            opc = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                               Ordenes
+                                                               1-Abrir orden
+                                                               2-Agregar platillo a la orden
+                                                               3-Cerrar orden
+                                                               4-Salir"""));
+
+            switch (opc) {
+                case 1:
+                    Restaurante.abrir_orden(restaurante);
+
+                    break;
+                case 2: //Agregar platillo 
+
+                    break;
+                case 3: //cerrar orden
+
+                    break;
+                case 4:
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Digte una opcion valida por favor.");
+            }
+
+        } while (opc != 4);
     }
 
 }
