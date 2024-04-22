@@ -10,7 +10,7 @@ public class MenuRestaurante {
     static Platillo[] platillos = new Platillo[1000];
     static int cantidadPlatillos = 0;
 
-    public static void MenuRestaurante(String[] args) {
+    public static void MenuRestaurante() {
          boolean salir = false;
 
         while (!salir) {
