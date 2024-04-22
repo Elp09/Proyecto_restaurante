@@ -28,7 +28,7 @@ public class Opciones {
                     MenuRestaurante.incio();
                     break;
                 case 3:
-                    Reportes.mostrarMenu();
+                    Reportes.mostrarMenu(restaurante);
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Gracias por usar");

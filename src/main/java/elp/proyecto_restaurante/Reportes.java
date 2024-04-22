@@ -10,7 +10,7 @@ public class Reportes {
     static int cantidadPlatillos = 0;
 
     // Método para mostrar el menú de reportes
-    public static void mostrarMenu() {
+    public static void mostrarMenu(Restaurante restaurante) {
         boolean salir = false;
 
         while (!salir) {
@@ -156,7 +156,7 @@ public class Reportes {
     }
     public static void mejor_mesero_rating(Restaurante restaurante){
         double mejor_rating = 0;
-        Mesero best_mes;
+        Mesero best_mes = restaurante.getMeseros()[0];
         for(int i = 0; i < restaurante.getMeseros().length; i++){
             if (restaurante.getMeseros()[i].getRating() > mejor_rating){
                 mejor_rating = restaurante.getMeseros()[i].getRating();
