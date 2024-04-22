@@ -96,7 +96,6 @@ public class Opciones {
             switch (opc) {
                 case 1:
                     Restaurante.abrir_orden(restaurante);
-
                     break;
                 case 2: //Agregar platillo 
                     

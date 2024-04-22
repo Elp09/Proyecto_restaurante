@@ -1,5 +1,7 @@
 package elp.proyecto_restaurante;
 
+import static elp.proyecto_restaurante.Ordeness.mesaTieneVista;
+import static elp.proyecto_restaurante.Ordeness.mostrarBotones;
 import java.time.LocalTime;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -237,6 +239,29 @@ public class Restaurante {
             }
         }
         return -1;
+    }
+        public static void botones(Restaurante restaurante, int numero_mesa) { 
+        boolean found = false;
+        int numBoton = mostrarBotones("Que desea hacer?", "Mesa no valida", JOptionPane.QUESTION_MESSAGE,
+        new String[]{"Digitar otro numero", "Cancelar orden"});
+        if (numBoton == 0) {
+            while (!found) {
+                int numMesa = Integer.parseInt(JOptionPane.showInputDialog("Digite nuevamente el numero de mesa."));
+                for (int i = 0; i < restaurante.getMesas().length; i++) {
+                    if (restaurante.getMesas()[i].getNumero_mesa() == numMesa) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found == true) {
+                    //Aqui van los datos impresos en caso cuando se hace la validacion
+
+                } else {
+                    System.out.println("Orden cancelada correctamente.");
+
+                }
+            }
+        }
     }
 
 }
