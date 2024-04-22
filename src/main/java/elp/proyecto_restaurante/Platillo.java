@@ -8,6 +8,9 @@ public class Platillo {
     private String descripcion;
     private double precio;
     private TipoPlatillo tipo;
+    private int numero_platillo;
+
+    
 
     public Platillo(String nombre, String descripcion, double precio, TipoPlatillo tipo) {
         this.nombre = nombre;
@@ -15,7 +18,9 @@ public class Platillo {
         this.precio = precio;
         this.tipo = tipo;
     }
-
+    public int getNumero_platillo() {
+        return numero_platillo;
+    }
     public String getNombre() {
         return nombre;
     }

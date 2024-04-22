@@ -1,8 +1,5 @@
 package elp.proyecto_restaurante;
 
-import static elp.proyecto_restaurante.Ordeness.mesaTieneVista;
-import static elp.proyecto_restaurante.Ordeness.mostrarBotones;
-import java.time.LocalTime;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -36,8 +33,7 @@ public class Restaurante {
     public static int getUltima_orden() {
         return ultima_orden;
     }
-    
-    
+
     public static int getNume_mesas() {
         return nume_mesas;
     }
@@ -65,7 +61,6 @@ public class Restaurante {
     public void setOrdenes(Orden[] ordenes) {
         this.ordenes = ordenes;
     }
-    
 
     public void llenar_mesas(int nume_mesas, Mesa mesas[]) {
         int mesas_con_vista[] = mesa_con_vista();
@@ -209,17 +204,58 @@ public class Restaurante {
     }
 
     public static void abrir_orden(Restaurante restaurante) {
+        Orden orden;
         String nombre_cliente = JOptionPane.showInputDialog("Digite el nombre del cliente:");
         int numero_mesa = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de mesa:"));
-        if (es_mesa_valida(restaurante, numero_mesa) >= 0){
-            Orden orden = new Orden(nombre_cliente, restaurante.getMesas()[es_mesa_valida(restaurante, numero_mesa)]);
+        if (es_mesa_valida(restaurante, numero_mesa) >= 0) {
+            orden = new Orden(nombre_cliente, restaurante.getMesas()[es_mesa_valida(restaurante, numero_mesa)]);
             restaurante.getOrdenes()[ultima_orden] = orden;
-            ultima_orden ++;
+            ultima_orden++;
         } else {
-            //botones de la funcion ordenes
-        }
-            
+            orden = new Orden("El", restaurante.getMesas()[es_mesa_valida(restaurante, numero_mesa)]);
 
+        }
+        informacion_orden(orden, restaurante);
+
+    }
+
+    public static void informacion_orden(Orden orden, Restaurante restaurante) {
+        String id_orden = "";
+        String cliente = "";
+        String mesa_numero = "";
+        String meseros_mesas = "";
+        String hora = "";
+        String estado_orden = "";
+        int tamano_strings = 27;
+
+        id_orden += (("Id orden #" + orden.getId_orden()
+                + "                       ").substring(0, tamano_strings) + "|");
+
+        cliente += (("Cliente :" + orden.getNombre_cliente()
+                + "                       ").substring(0, tamano_strings) + "|");
+        mesa_numero += (("Mesa :" + orden.getNumero_mesa()
+                + "                       ").substring(0, tamano_strings) + "|");
+        meseros_mesas += (("Mesero: " + orden.getMesero().getNombre()
+                + "                         ").substring(0, tamano_strings) + "|");
+
+        hora += (("Hora: " + orden.getHora_orden()
+                + "                         ").substring(0, tamano_strings) + "|");
+
+        if (orden.isEstado()) {
+            estado_orden += (("Estado: Abierta"
+                    + "                         ").substring(0, tamano_strings) + "|");
+
+        } else {
+            estado_orden += (("Estado: Abierta"
+                    + "                         ").substring(0, tamano_strings) + "|");
+        }
+
+        System.out.println(id_orden);
+        System.out.println(cliente);
+        System.out.println(mesa_numero);
+        System.out.println(meseros_mesas);
+        System.out.println(hora);
+        System.out.println(estado_orden);
     }
 
     public static boolean mesaTieneVista(Restaurante restaurante, int numeroMesa) {
@@ -240,10 +276,11 @@ public class Restaurante {
         }
         return -1;
     }
-        public static void botones(Restaurante restaurante, int numero_mesa) { 
+
+    public static boolean validar_orden(Restaurante restaurante, int numero_mesa) {
         boolean found = false;
         int numBoton = mostrarBotones("Que desea hacer?", "Mesa no valida", JOptionPane.QUESTION_MESSAGE,
-        new String[]{"Digitar otro numero", "Cancelar orden"});
+                new String[]{"Digitar otro numero", "Cancelar orden"});
         if (numBoton == 0) {
             while (!found) {
                 int numMesa = Integer.parseInt(JOptionPane.showInputDialog("Digite nuevamente el numero de mesa."));
@@ -253,15 +290,72 @@ public class Restaurante {
                         break;
                     }
                 }
-                if (found == true) {
-                    //Aqui van los datos impresos en caso cuando se hace la validacion
-
+                if (found) {
+                    return true;
                 } else {
                     System.out.println("Orden cancelada correctamente.");
+                    return false;
 
                 }
             }
         }
+        //if (!restaurante.getMesas()[numero_mesa - 1].isEstado_uso()){
+
+        return false;
+    }
+
+    public static void agregar_platillo_orden(Restaurante restaurante) {
+        String pregunta = "A que orden se le agregaran platillos?\n";
+        int numero_ordenes_abiertas = 0;
+
+        for (int i = 0; i < ultima_orden; i++) {
+            if (restaurante.getOrdenes()[i].isEstado()) {
+                numero_ordenes_abiertas++;
+            }
+        }
+        String ordenes_abiertas[] = new String[numero_ordenes_abiertas];
+        int ultima_pos_abiertas = 0;
+        for (int i = 0; i < ultima_orden; i++) {
+            if (restaurante.getOrdenes()[i].isEstado()) {
+                ordenes_abiertas[ultima_pos_abiertas] = "" + restaurante.getOrdenes()[i].getId_orden();
+                ultima_pos_abiertas++;
+            }
+        }
+        int numero_orden = JOptionPane.showOptionDialog(null, pregunta, "", JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, ordenes_abiertas, ordenes_abiertas[0]);
+        if (validar_numero_platillo(restaurante) >=0){
+            int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Digite la cantidad de ese platillo"));
+            int precio_detalle = validar_numero_platillo(restaurante) * cantidad;
+            
+        }
+
+    }
+    
+    public static int validar_numero_platillo(Restaurante restaurante){
+        int numero_platillo = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de platillo:"));
+        for (int i=0; i<MenuRestaurante.cantidadPlatillos;i++){
+            if (MenuRestaurante.platillos[i].getNumero_platillo() == numero_platillo){
+                return numero_platillo;
+            }
+        }
+        return -1;
+            
+    }
+
+    public static int mostrarBotones(
+            String mensaje,
+            String titulo,
+            int img,
+            String botones[]) {
+        return JOptionPane.showOptionDialog(
+                null,
+                mensaje,
+                titulo,
+                JOptionPane.DEFAULT_OPTION,
+                img,
+                null,
+                botones,
+                botones[0]);
     }
 
 }

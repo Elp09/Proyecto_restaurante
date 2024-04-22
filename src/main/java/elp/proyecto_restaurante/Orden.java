@@ -4,7 +4,7 @@ import java.time.LocalTime;
 
 public class Orden {
 
-    private static int contadorOrdenes = 199;
+    private static int contadorOrdenes = 200;
 
     private int id_orden;
     private String nombre_cliente;
