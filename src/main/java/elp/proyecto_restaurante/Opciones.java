@@ -25,6 +25,7 @@ public class Opciones {
                     opciones_ordenes(restaurante);
                     break;
                 case 2:
+                    
                     break;
                 case 3:
                     //menu_reportes();
@@ -98,7 +99,7 @@ public class Opciones {
 
                     break;
                 case 2: //Agregar platillo 
-
+                    
                     break;
                 case 3: //cerrar orden
 
