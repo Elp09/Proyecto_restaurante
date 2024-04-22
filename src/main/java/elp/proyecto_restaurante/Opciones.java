@@ -22,10 +22,9 @@ public class Opciones {
                     informacion_restaurante(restaurante);
                     break;
                 case 1:
-                    Ordeness.opciones_ordenes(restaurante);
+                    opciones_ordenes(restaurante);
                     break;
                 case 2:
-                    opciones_ordenes(restaurante);
                     break;
                 case 3:
                     //menu_reportes();
@@ -80,7 +79,7 @@ public class Opciones {
         System.out.println(meseros_mesas);
         System.out.println(tipo_mesas);
     }
-    
+
     public static void opciones_ordenes(Restaurante restaurante) {
         String nombre_cliente;
         int numero_mesa;
