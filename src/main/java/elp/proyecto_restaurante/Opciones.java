@@ -101,7 +101,7 @@ public class Opciones {
                     Restaurante.agregar_platillo_orden(restaurante);
                     break;
                 case 3: //cerrar orden
-
+                    Restaurante.cerrar_ordenes(restaurante);
                     break;
                 case 4:
                     break;

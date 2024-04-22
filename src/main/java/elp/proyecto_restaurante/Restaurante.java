@@ -323,23 +323,60 @@ public class Restaurante {
         }
         int numero_orden = JOptionPane.showOptionDialog(null, pregunta, "", JOptionPane.DEFAULT_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, ordenes_abiertas, ordenes_abiertas[0]);
-        if (validar_numero_platillo(restaurante) >=0){
+        if (validar_numero_platillo(restaurante) >= 0) {
             int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Digite la cantidad de ese platillo"));
             int precio_detalle = validar_numero_platillo(restaurante) * cantidad;
-            
         }
 
     }
-    
-    public static int validar_numero_platillo(Restaurante restaurante){
+
+    public static int validar_numero_platillo(Restaurante restaurante) {
         int numero_platillo = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de platillo:"));
-        for (int i=0; i<MenuRestaurante.cantidadPlatillos;i++){
-            if (MenuRestaurante.platillos[i].getNumero_platillo() == numero_platillo){
+        for (int i = 0; i < MenuRestaurante.cantidadPlatillos; i++) {
+            if (MenuRestaurante.platillos[i].getNumero_platillo() == numero_platillo) {
                 return numero_platillo;
             }
         }
         return -1;
-            
+
+    }
+
+    public static void validar_numero_mesa(Restaurante restaurante) {
+        int numBoton = mostrarBotones("Seguro que desea cerrar la orden?", "Desea cerrar orden?", JOptionPane.QUESTION_MESSAGE,
+                new String[]{"Si", "No"});
+        if (numBoton == 0) {
+            int numBoton1 = mostrarBotones("Que puntuación le da al mesero?", "Ranking mesero", JOptionPane.QUESTION_MESSAGE,
+                new String[]{"1", "2", "3","4","5"});
+            if (numBoton1 == 1) {
+                //se hacen las validaciones del ranking               
+            }
+            double propinas = Double.parseDouble(JOptionPane.showInputDialog("Digite la propina que desea dejar al mesero."));
+            //Que el estado pase a cerrado
+            JOptionPane.showMessageDialog(null, "Orden cerrada con exito");
+        }
+    }
+
+
+    public static void cerrar_ordenes(Restaurante restaurante) {
+        String pregunta = "Que orden desea cerrar?\n";
+        int numero_ordenes_abiertas = 0;
+
+        for (int i = 0; i < ultima_orden; i++) {
+            if (restaurante.getOrdenes()[i].isEstado()) {
+                numero_ordenes_abiertas++;
+            }
+        }
+        String ordenes_abiertas[] = new String[numero_ordenes_abiertas];
+        int ultima_pos_abiertas = 0;
+        for (int i = 0; i < ultima_orden; i++) {
+            if (restaurante.getOrdenes()[i].isEstado()) {
+                ordenes_abiertas[ultima_pos_abiertas] = "" + restaurante.getOrdenes()[i].getId_orden();
+                ultima_pos_abiertas++;
+            }
+        }
+        int numero_orden = JOptionPane.showOptionDialog(null, pregunta, "", JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, ordenes_abiertas, ordenes_abiertas[0]);
+        validar_numero_mesa(restaurante);
     }
 
     public static int mostrarBotones(
@@ -357,5 +394,4 @@ public class Restaurante {
                 botones,
                 botones[0]);
     }
-
 }
