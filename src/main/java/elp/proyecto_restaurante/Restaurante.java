@@ -383,6 +383,7 @@ public class Restaurante {
                 JOptionPane.QUESTION_MESSAGE, null, ordenes_abiertas, ordenes_abiertas[0]);
         
         validar_numero_mesa(restaurante);
+        
     }
 
     public static int mostrarBotones(

@@ -9,6 +9,7 @@ public class Platillo {
     private double precio;
     private TipoPlatillo tipo;
     private int numero_platillo;
+    
 
     
 
