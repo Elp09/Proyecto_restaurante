@@ -11,6 +11,7 @@ public class Restaurante {
     public static int nume_mesas;
     private Mesero meseros[];
     private Orden ordenes[];
+    private static int ultima_orden = 0;
 
     public Restaurante() {
         nume_mesas = randint(8, 12);
@@ -29,6 +30,40 @@ public class Restaurante {
     public Mesa[] getMesas() {
         return this.mesas;
     }
+
+    public static int getUltima_orden() {
+        return ultima_orden;
+    }
+    
+    
+    public static int getNume_mesas() {
+        return nume_mesas;
+    }
+
+    public Mesero[] getMeseros() {
+        return meseros;
+    }
+
+    public Orden[] getOrdenes() {
+        return ordenes;
+    }
+
+    public void setMesas(Mesa[] mesas) {
+        this.mesas = mesas;
+    }
+
+    public static void setNume_mesas(int nume_mesas) {
+        Restaurante.nume_mesas = nume_mesas;
+    }
+
+    public void setMeseros(Mesero[] meseros) {
+        this.meseros = meseros;
+    }
+
+    public void setOrdenes(Orden[] ordenes) {
+        this.ordenes = ordenes;
+    }
+    
 
     public void llenar_mesas(int nume_mesas, Mesa mesas[]) {
         int mesas_con_vista[] = mesa_con_vista();
@@ -176,7 +211,8 @@ public class Restaurante {
         int numero_mesa = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de mesa:"));
         if (es_mesa_valida(restaurante, numero_mesa) >= 0){
             Orden orden = new Orden(nombre_cliente, restaurante.getMesas()[es_mesa_valida(restaurante, numero_mesa)]);
-        }else{
+            restaurante.getOrdenes()[getUltima_orden()] = orden;
+        } else {
             //botones de la funcion ordenes
         }
             

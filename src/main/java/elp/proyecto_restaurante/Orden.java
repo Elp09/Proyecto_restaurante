@@ -27,4 +27,85 @@ public class Orden {
         this.estado = true; // La orden se inicializa como abierta
         this.platillos = new Platillo[mesa.getCantidad_sillas() * 3]; // Se inicializa el arreglo de platillos vacío
     }
+
+    public static void setContadorOrdenes(int contadorOrdenes) {
+        Orden.contadorOrdenes = contadorOrdenes;
+    }
+
+    public void setId_orden(int id_orden) {
+        this.id_orden = id_orden;
+    }
+
+    public void setNombre_cliente(String nombre_cliente) {
+        this.nombre_cliente = nombre_cliente;
+    }
+
+    public void setNumero_mesa(int numero_mesa) {
+        this.numero_mesa = numero_mesa;
+    }
+
+    public void setMesero(Mesero mesero) {
+        this.mesero = mesero;
+    }
+
+    public void setHora_orden(LocalTime hora_orden) {
+        this.hora_orden = hora_orden;
+    }
+
+    public void setIVA(double IVA) {
+        this.IVA = IVA;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public void setPlatillos(Platillo[] platillos) {
+        this.platillos = platillos;
+    }
+
+    
+
+    public int getId_orden() {
+        return id_orden;
+    }
+
+    public String getNombre_cliente() {
+        return nombre_cliente;
+    }
+
+    public int getNumero_mesa() {
+        return numero_mesa;
+    }
+
+    public Mesero getMesero() {
+        return mesero;
+    }
+
+    public LocalTime getHora_orden() {
+        return hora_orden;
+    }
+
+    public double getIVA() {
+        return IVA;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public Platillo[] getPlatillos() {
+        return platillos;
+    }
+    
+    
+    
 }
