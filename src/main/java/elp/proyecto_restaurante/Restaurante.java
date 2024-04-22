@@ -360,6 +360,7 @@ public class Restaurante {
     public static void cerrar_ordenes(Restaurante restaurante) {
         String pregunta = "Que orden desea cerrar?\n";
         int numero_ordenes_abiertas = 0;
+        
 
         for (int i = 0; i < ultima_orden; i++) {
             if (restaurante.getOrdenes()[i].isEstado()) {
@@ -367,15 +368,20 @@ public class Restaurante {
             }
         }
         String ordenes_abiertas[] = new String[numero_ordenes_abiertas];
+        int pos_ordenes_abiertos[] = new int[numero_ordenes_abiertas];
         int ultima_pos_abiertas = 0;
+        
         for (int i = 0; i < ultima_orden; i++) {
             if (restaurante.getOrdenes()[i].isEstado()) {
                 ordenes_abiertas[ultima_pos_abiertas] = "" + restaurante.getOrdenes()[i].getId_orden();
+                pos_ordenes_abiertos[ultima_pos_abiertas] = i;
+                
                 ultima_pos_abiertas++;
             }
         }
         int numero_orden = JOptionPane.showOptionDialog(null, pregunta, "", JOptionPane.DEFAULT_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, ordenes_abiertas, ordenes_abiertas[0]);
+        
         validar_numero_mesa(restaurante);
     }
 

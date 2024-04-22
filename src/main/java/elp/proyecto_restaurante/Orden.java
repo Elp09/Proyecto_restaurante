@@ -15,6 +15,7 @@ public class Orden {
     private double total;
     private boolean estado;
     private Platillo[] platillos;
+    public static int ultima_pos_platillo = 0;
 
     public Orden(String nombre_cliente, Mesa mesa) {
         this.id_orden = contadorOrdenes++;
