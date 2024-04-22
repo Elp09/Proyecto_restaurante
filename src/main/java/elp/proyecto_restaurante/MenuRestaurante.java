@@ -10,8 +10,8 @@ public class MenuRestaurante {
     static Platillo[] platillos = new Platillo[1000];
     static int cantidadPlatillos = 0;
 
-    public static void main(String[] args) {
-        boolean salir = false;
+    public static void MenuRestaurante(String[] args) {
+         boolean salir = false;
 
         while (!salir) {
             int opcion = Integer.parseInt(JOptionPane.showInputDialog(
@@ -47,16 +47,19 @@ public class MenuRestaurante {
     }
 
     public static void mostrarMenu() {
-        String menu = "-------- MENÚ --------\n";
+        String menu = "-------- MENÚ --------\n"
+                + "\nPescado al ajillo con papas"
+                + "\nBurger de pescado empanizado con aros de cebolla"
+                + "\nArroz con mariscos";
 
         for (int i = 0; i < cantidadPlatillos; i++) {
-            Platillo platillo = platillos[i];
-            menu += "Número del platillo #" + (numeroPlatillo + i) + "\n";
-            menu += "Nombre: " + platillo.getNombre() + "\n";
-            menu += "Descripción: " + platillo.getDescripcion() + "\n";
-            menu += "Precio: $" + platillo.getPrecio() + "\n";
-            menu += "Tipo: " + platillo.getTipo() + "\n\n";
-        }
+        Platillo platillo = platillos[i];
+        System.out.println("Número del platillo #" + (numeroPlatillo + i));
+        System.out.println("Nombre: " + platillo.getNombre());
+        System.out.println("Descripción: " + platillo.getDescripcion());
+        System.out.println("Precio: $" + platillo.getPrecio());
+        System.out.println("Tipo: " + platillo.getTipo() + "\n");
+    }
 
         JOptionPane.showMessageDialog(null, menu, "Menú del Restaurante", JOptionPane.PLAIN_MESSAGE);
     }
